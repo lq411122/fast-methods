@@ -1,0 +1,12 @@
+dist: xenial
+language: python
+python: 3.7
+install:
+  - poetry install
+before_install:
+  - docker build -t lq411122/fast-methods .
+
+  - pip install poetry
+
+services:
+  - mongodb
