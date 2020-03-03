@@ -20,10 +20,10 @@ if not MONGODB_URL:
 
     MONGODB_URL = DatabaseURL(
         # f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}"
-        f"mongodb://{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}"
+        f"mongodb://{MONGO_HOST}:{MONGO_PORT}"
     )
 else:
     MONGODB_URL = DatabaseURL(MONGODB_URL)
 
-# MONGODB_URL = "mongodb://localhost/27017"
+MONGODB_URL = "mongodb://localhost/27017"
 db_client = MongoClient(MONGODB_URL)
