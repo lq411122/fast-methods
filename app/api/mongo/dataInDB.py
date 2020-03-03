@@ -1,4 +1,7 @@
 from typing import List
+
+from fastapi import HTTPException
+
 from config.testing import db_client, per_page
 
 
@@ -10,7 +13,7 @@ def get_data_for_market(
 
     # 判断输入的页码是否符合
     normal_page = total // per_page  # 每页够十条数据的页数
-    total_page = normal_page + 1  # 总页数
+    total_page = normal_page if total % per_page == 0 else normal_page + 1
     last_page = total % per_page  # 最后一页市场个数
 
     if 0 < pag <= normal_page:
@@ -18,7 +21,7 @@ def get_data_for_market(
     elif pag == total_page:
         pages = last_page
     else:
-        return "请输入正确的页码"
+        raise HTTPException(status_code=200, detail="查询页无数据")
 
     data = db_client.test.shop_list.aggregate([
         {"$geoNear": {"near": position,
