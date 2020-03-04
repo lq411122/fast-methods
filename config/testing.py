@@ -1,12 +1,10 @@
 import os
-
 from databases import DatabaseURL
 from dotenv import load_dotenv
-from pymongo import MongoClient
+
 
 API_V1_STR = "/api/docs"
 per_page = 10  # 分页/每页数据条数
-
 
 load_dotenv(".env")
 MONGODB_URL = os.getenv("MONGODB_URL", "")  # deploying without docker-compose
@@ -25,5 +23,5 @@ if not MONGODB_URL:
 else:
     MONGODB_URL = DatabaseURL(MONGODB_URL)
 
-MONGODB_URL = "mongodb://localhost/27017"
-db_client = MongoClient(MONGODB_URL)
+MONGODB_URL = "mongodb://localhost:27017"
+

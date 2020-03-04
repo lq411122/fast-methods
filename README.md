@@ -12,7 +12,7 @@ export MONGO_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPA
 mongo --host=$MONGO_HOST --port=$MONGO_PORT --username=$MONGO_USER $MONGO_DB
 Then run the following commands to bootstrap your environment with poetry:
 
-git clone https://github.com/lq411122/fast-methods.git
+git clone https://github.com/lq411122/fast-methods.git(docker image url: lq4111/fast-methods:v2)
 cd fast-methods
 poetry install
 poetry shell
@@ -20,7 +20,7 @@ Then create .env file (or rename and modify .env.example) in project root and se
 
 touch .env
 echo MONGODB_URL=mongo://MONGO_HOST:$MONGO_PORT/ >> .env
-echo ALLOWED_HOSTS='"127.0.0.1", "localhost"' >> .env
+
 
 To run the web application in debug use:
 uvicorn asgi:app --reload
@@ -37,9 +37,10 @@ All routes are available on /docs or /redoc paths with Swagger or ReDoc.
 Project structure
 Files related to application are in the app directory. Application parts are:
 
+api     - handlers for routes
 models  - pydantic models that used in endpoints
 mongo   - databases in mongo
-api     - handlers for routes
 main.py - FastAPI application instance, api router including
+
 
 

@@ -1,9 +1,9 @@
 from fastapi import Query, APIRouter
 from starlette.status import HTTP_200_OK
 
-from ...utils import JSONResponse
+from utils.response import JSONResponse
 
-from app.api.mongo.dataInDB import get_data_for_market
+from app.mongo.dataInDB import get_data_for_market
 from app.models.body_model import market_parm
 from app.models.response_model import market_response
 

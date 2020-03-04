@@ -33,7 +33,6 @@ class CustomFakerProvider(BaseProvider):
                   "authenticate_time": "2020-02-29T17:55:20.833Z"
                 }
 
-
     def market(self):
         return {
             "position": [120.123456, 30.123456]

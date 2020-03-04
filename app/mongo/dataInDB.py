@@ -2,14 +2,15 @@ from typing import List
 
 from fastapi import HTTPException
 
-from config.testing import db_client, per_page
+from config.testing import per_page
+from utils.mongodb import collection
 
 
 def get_data_for_market(
         position: List[float] = None,
         pag: int = None):
 
-    total = db_client.test.shop_list.find({"position": {"$nearSphere": position}}).count()
+    total = collection.find({"position": {"$nearSphere": position}}).count()
 
     # 判断输入的页码是否符合
     normal_page = total // per_page  # 每页够十条数据的页数
@@ -23,7 +24,7 @@ def get_data_for_market(
     else:
         raise HTTPException(status_code=200, detail="查询页无数据")
 
-    data = db_client.test.shop_list.aggregate([
+    data = collection.aggregate([
         {"$geoNear": {"near": position,
                       "distanceField": "dis",
                       "includeLocs": "loc",
