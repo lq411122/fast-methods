@@ -19,7 +19,7 @@ poetry shell
 Then create .env file (or rename and modify .env.example) in project root and set environment variables for application:
 
 touch .env
-echo MONGODB_URL=mongo://MONGO_HOST:$MONGO_PORT/ >> .env
+echo MONGODB_URL=mongodb://MONGO_HOST:$MONGO_PORT/ >> .env
 
 
 To run the web application in debug use:

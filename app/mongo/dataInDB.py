@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import HTTPException
 
-from config.testing import per_page
+from ..api.utils import per_page
 from utils.mongodb import collection
 
 

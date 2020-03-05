@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 
 API_V1_STR = "/api/docs"
-per_page = 10  # 分页/每页数据条数
 
 load_dotenv(".env")
 MONGODB_URL = os.getenv("MONGODB_URL", "")  # deploying without docker-compose
